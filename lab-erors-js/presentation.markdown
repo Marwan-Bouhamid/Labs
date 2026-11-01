@@ -3,130 +3,59 @@ marp: true
 theme: default
 paginate: true
 size: 16:9
+lang: fr
 style: |
   section {
     background: #101827;
     color: #edf3fa;
     font-family: Inter, "Segoe UI", Arial, sans-serif;
     font-size: 24px;
-    padding: 48px 66px;
+    padding: 42px 60px;
     justify-content: center;
   }
-
   h1, h2 {
     color: #f7fbff;
-    font-family: Anton, Impact, "Arial Narrow", sans-serif;
-    font-weight: 400;
-    line-height: 1;
-    margin: 0 0 24px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    line-height: 1.08;
   }
-
-  h1 { font-size: 94px; }
-  h2 { font-size: 58px; }
-
-  h3 {
-    color: #56d6c2;
-    font-size: 26px;
-    margin: 0 0 10px;
-  }
-
-  ul, ol {
-    font-size: 26px;
-    line-height: 1.34;
-  }
-
-  li { margin-bottom: 10px; }
-  strong { color: #56d6c2; }
-
+  h1 { font-size: 62px; }
+  h2 { font-size: 42px; }
+  h3, strong { color: #56d6c2; }
+  li { margin-bottom: 8px; }
   code {
     background: rgba(86, 214, 194, 0.14);
-    border-radius: 5px;
+    border-radius: 4px;
     color: #b9fff2;
-    padding: 2px 7px;
+    padding: 2px 6px;
   }
-
   pre {
     background: #0a111d;
     border: 1px solid #2a3b50;
-    border-radius: 10px;
-    font-size: 18px;
-    line-height: 1.32;
-    padding: 16px 20px;
+    border-radius: 8px;
+    font-size: 17px;
+    line-height: 1.3;
+    padding: 12px 16px;
   }
-
-  table {
-    font-size: 19px;
-    line-height: 1.2;
-  }
-
-  th, td { padding: 6px 10px; }
-
+  table { font-size: 19px; }
+  th, td { padding: 6px 9px; }
   section.light {
     background: #f3f6fa;
     color: #172337;
   }
-
-  section.light h1,
-  section.light h2 { color: #172337; }
-
-  section.light h3,
-  section.light strong { color: #087f73; }
-
+  section.light h1, section.light h2 { color: #172337; }
+  section.light h3, section.light strong { color: #087f73; }
   section.light code {
     background: #dceeea;
     color: #075e56;
   }
-
   section.light pre {
     background: #e8edf3;
     border-color: #d0d9e4;
     color: #172337;
   }
-
-  section.title {
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  section.title::before {
-    color: rgba(86, 214, 194, 0.09);
-    content: "!";
-    font-family: Anton, Impact, sans-serif;
-    font-size: 440px;
-    line-height: 0.8;
-    position: absolute;
-    right: 100px;
-    bottom: -50px;
-  }
-
-  section.title h1 {
-    font-size: 125px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .eyebrow {
-    color: #56d6c2;
-    font-size: 17px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    margin-bottom: 18px;
-    text-transform: uppercase;
-  }
-
-  .small {
-    font-size: 19px;
-    line-height: 1.35;
-  }
-
-  .callout {
-    border-left: 5px solid #56d6c2;
-    margin-top: 18px;
-    padding: 8px 0 8px 16px;
-  }
 ---
 
-<!-- _class: title -->
+<!-- _class: lead -->
 
 # Erreurs JS
 
@@ -139,206 +68,308 @@ style: |
 1. Introduction
 2. Problems Encountered
 3. Solutions Implemented
+4. Outils de débogage
+5. Vérification et conclusion
 
 ---
 
-<div class="eyebrow">01 / Introduction</div>
+## Introduction
 
-## Comprendre les erreurs web
+Pendant le développement d’un blog, une erreur peut venir du code JavaScript, du navigateur, de l’appel API ou du serveur PHP.
 
-Une erreur peut apparaître dans le navigateur, dans une requête HTTP ou sur le serveur. Ce lab présente les codes HTTP et les erreurs JavaScript et PHP, puis montre comment remonter à leur cause.
+### Objectifs
 
-### Notions abordées
+- Étudier cinq erreurs JavaScript représentatives et expliquer leur origine.
+- Lire la console et remonter du message à la ligne et à la cause.
+- Déboguer pas à pas dans VS Code et Google Chrome.
+- Inspecter les requêtes API et les réponses PHP avec Chrome DevTools.
+- Vérifier qu’une correction résout le problème sans casser le parcours.
 
-- Familles de codes HTTP : `2xx`, `3xx`, `4xx` et `5xx`.
-- Erreurs JavaScript et réponses `fetch()`.
-- Erreurs PHP côté serveur.
-- Outils de diagnostic : Console, Network et logs.
-
----
-
-<!-- _class: light -->
-
-<div class="eyebrow">02 / Problems Encountered</div>
-
-## Symptômes fréquents
-
-Le rapport du lab présente des cas courants à reconnaître :
-
-- Une route ou une ressource renvoie `404`.
-- Une requête échoue ou retourne un code `4xx` ou `5xx`.
-- Le frontend attend du JSON mais reçoit du HTML.
-- `fetch()` renvoie une réponse HTTP d’erreur sans rejeter automatiquement sa Promise.
-- Une erreur JavaScript ou PHP interrompt le traitement attendu.
-
----
-
-<div class="eyebrow">03 / Solutions Implemented</div>
-
-## Une méthode de diagnostic
-
-1. Lire le message et la pile d’appels dans la **Console**.
-2. Dans **Network**, inspecter l’URL, la méthode, le statut, le payload et la réponse.
-3. Vérifier le terminal ou les logs du serveur PHP.
-4. Comparer le format reçu avec celui attendu (`JSON` ou `HTML`).
-5. Traiter explicitement les erreurs HTTP et les erreurs de parsing.
-
-<div class="callout">Le statut HTTP aide à localiser le problème ; il ne remplace pas l’inspection de la réponse et des logs.</div>
+> Les exemples suivants sont des scénarios reproductibles de développement, et non l’affirmation qu’ils se sont tous produits dans le projet.
 
 ---
 
 <!-- _class: light -->
 
-<div class="eyebrow">04 / Codes HTTP</div>
+## Une méthode pour chaque erreur
 
-## Lire la famille du statut
+Pour chacun des cinq cas :
 
-| Famille | Sens général | Première piste |
-|:---:|:---|:---|
-| **2xx** | Requête traitée avec succès | Vérifier le contenu retourné |
-| **3xx** | Redirection ou validation du cache | Examiner la destination ou les en-têtes |
-| **4xx** | Problème lié à la requête ou à l’accès | Vérifier URL, méthode, données et droits |
-| **5xx** | Échec côté serveur ou passerelle | Consulter les logs côté serveur |
-
-Le statut est une première indication : le détail dépend de la route et de la réponse.
+1. **Problème de départ :** reproduire le symptôme dans une page ou un parcours du blog.
+2. **Lecture de l’erreur :** relever le message, le fichier, la ligne et la pile d’appels.
+3. **Recherche de la cause :** examiner les valeurs, le DOM ou la requête concernée.
+4. **Résolution :** corriger une cause à la fois et expliquer pourquoi.
+5. **Vérification :** refaire le parcours normal et le cas d’erreur.
+6. **Outils :** noter les vues et commandes utilisées pour le diagnostic.
 
 ---
 
-<div class="eyebrow">05 / Réussite & redirection</div>
+## Configurer le débogage : PHP, VS Code et Chrome
 
-## Codes `2xx` et `3xx`
+1. Ouvrir le dossier du blog dans VS Code et démarrer son serveur PHP dans le terminal intégré. Exemple à adapter à la racine du projet :
 
-| Code | Signification | Exemple courant |
-|:---:|:---|:---|
-| `200` | OK — requête réussie | Lecture de données |
-| `201` | Created — ressource créée | Création via `POST` |
-| `204` | No Content — succès sans corps | Suppression réussie |
-| `301` | Redirection permanente | URL déplacée |
-| `302` | Redirection temporaire | Redirection provisoire |
-| `304` | Ressource non modifiée | Utilisation du cache |
+   ```bash
+   php -S localhost:8000
+   ```
 
-Pour `204`, ne tentez pas de parser un corps JSON qui n’existe pas.
+2. Ouvrir l’URL locale dans Google Chrome.
+3. Dans VS Code, placer un point d’arrêt dans le fichier JavaScript.
+4. Créer `.vscode/launch.json` pour lancer Chrome sur la page du projet :
 
----
+   ```json
+   {
+     "version": "0.2.0",
+     "configurations": [
+       {
+         "type": "chrome",
+         "request": "launch",
+         "name": "Blog dans Chrome",
+         "url": "http://localhost:8000",
+         "webRoot": "${workspaceFolder}"
+       }
+     ]
+   }
+   ```
 
-<!-- _class: light -->
-
-<div class="eyebrow">06 / Erreurs de requête</div>
-
-## Codes `4xx`
-
-| Code | Signification | À vérifier |
-|:---:|:---|:---|
-| `400` | Bad Request | Format et contenu de la requête |
-| `401` | Unauthorized | Authentification requise ou expirée |
-| `403` | Forbidden | Autorisations insuffisantes |
-| `404` | Not Found | URL, route ou ressource |
-| `405` | Method Not Allowed | Méthode HTTP attendue |
-| `429` | Too Many Requests | Limite de fréquence |
-
-Un code `4xx` indique généralement que le serveur n’a pas pu traiter la requête telle qu’elle a été envoyée.
-
----
-
-<div class="eyebrow">07 / Erreurs serveur</div>
-
-## Codes `5xx`
-
-| Code | Signification | Première action |
-|:---:|:---|:---|
-| `500` | Erreur interne du serveur | Lire les logs serveur |
-| `503` | Service indisponible | Vérifier l’état du service |
-| `504` | Délai dépassé auprès d’un serveur amont | Vérifier les dépendances et délais |
-
-Le navigateur seul ne révèle pas toujours la cause d’un `5xx` : consulter le terminal ou les journaux du backend.
+Adaptez l’URL, le répertoire public et les chemins au projet. Dans VS Code, démarrer la configuration avec **F5**.
 
 ---
 
 <!-- _class: light -->
 
-<div class="eyebrow">08 / JavaScript & PHP</div>
+## Exécuter le code pas à pas
 
-## Reconnaître les messages
+Lorsque le point d’arrêt est atteint :
 
-| Message | Interprétation ou piste |
-|:---|:---|
-| `SyntaxError` | Syntaxe invalide, ou parsing JSON impossible |
-| `ReferenceError` | Variable ou fonction non définie |
-| `TypeError` | Opération incompatible avec la valeur reçue |
-| `Failed to fetch` | Échec réseau, URL, serveur ou blocage navigateur |
-| `Uncaught (in promise)` | Rejet de Promise non pris en charge |
-| PHP `Parse error` | Erreur de syntaxe PHP |
-| PHP `Undefined variable` | Variable non définie |
-| PHP `Fatal error` | Erreur bloquante à examiner dans les logs |
+- **F10 — Step Over :** exécuter la ligne sans entrer dans la fonction appelée.
+- **F11 — Step Into :** entrer dans la fonction appelée.
+- **Maj+F11 — Step Out :** terminer la fonction en cours.
+- Examiner **Variables**, **Watch** et **Call Stack** dans la vue Run and Debug.
+- Survoler une variable pour voir sa valeur au point d’arrêt.
+
+Dans Chrome, ouvrir les DevTools avec **F12** ou **Ctrl+Maj+I**. L’onglet **Sources** permet aussi de placer des points d’arrêt et de parcourir les variables.
 
 ---
 
-<div class="eyebrow">09 / Pratique · Diagnostic</div>
+## Erreur 1 — `ReferenceError`
 
-## Quand JSON attendu, HTML reçu
+### Problème de départ
 
-Le serveur peut retourner une page HTML d’erreur (par exemple une page `404` ou `500`). Appeler directement `response.json()` peut alors provoquer une `SyntaxError`.
+Le clic sur un article doit charger ses commentaires, mais l’appel utilise un identifiant qui n’a jamais été déclaré :
 
 ```javascript
-const response = await fetch("/api/genres");
-
-console.log(response.status);
-console.log(response.headers.get("content-type"));
-
-const body = await response.text();
-console.log(body);
+const articleId = article.id;
+loadComments(articleID);
 ```
 
-Dans DevTools, inspectez aussi **Network → requête → Response** pour voir le corps réellement reçu.
+### Lire l’erreur
+
+`ReferenceError: articleID is not defined` indique que JavaScript ne trouve pas cet identifiant. Dans la console, relever aussi le fichier et le numéro de ligne.
+
+### Résolution et vérification
+
+Corriger la casse et conserver le même nom de variable :
+
+```javascript
+loadComments(articleId);
+```
+
+Recharger l’article et vérifier que l’appel utilise le bon identifiant.
+
+**Outils :** Console, lien vers la ligne d’erreur, point d’arrêt VS Code, panneau **Variables**.
 
 ---
 
 <!-- _class: light -->
 
-<div class="eyebrow">10 / Pratique · Traiter `fetch()`</div>
+## Erreur 2 — `Cannot read properties of null`
 
-## Vérifier le statut avant le JSON
+### Problème de départ
 
-`fetch()` rejette notamment en cas d’échec réseau, mais un statut HTTP comme `404` ne rejette pas automatiquement la Promise. Vérifiez `response.ok` avant d’utiliser le corps comme JSON.
+Le script du formulaire de commentaire tente d’attacher un gestionnaire à un élément absent ou pas encore chargé :
 
 ```javascript
-const response = await fetch("/api/genres");
+document.querySelector("#comment-form")
+  .addEventListener("submit", sendComment);
+```
 
-if (!response.ok) {
-  throw new Error(`HTTP ${response.status}`);
+### Lire l’erreur
+
+`TypeError: Cannot read properties of null` signifie que `querySelector()` n’a trouvé aucun élément. Vérifier l’identifiant dans le HTML et l’ordre de chargement du script.
+
+### Résolution et vérification
+
+Charger le script avec `defer`, puis confirmer que le sélecteur correspond au formulaire :
+
+```html
+<script src="/js/comments.js" defer></script>
+```
+
+```javascript
+const form = document.querySelector("#comment-form");
+if (!form) {
+  throw new Error("Formulaire de commentaire introuvable");
+}
+form.addEventListener("submit", sendComment);
+```
+
+Recharger la page et vérifier l’envoi du formulaire et la console.
+
+**Outils :** Elements pour inspecter le DOM, Console, point d’arrêt au chargement du script.
+
+---
+
+## Erreur 3 — `SyntaxError: Unexpected token '<'`
+
+### Problème de départ
+
+Le blog attend une réponse JSON pour afficher les articles, mais l’endpoint PHP renvoie une page HTML (par exemple une page 404 ou une erreur PHP) :
+
+```javascript
+const response = await fetch("/api/articles");
+const articles = await response.json();
+```
+
+### Lire l’erreur
+
+Le caractère `<` au début du corps suggère souvent du HTML. Ce message ne prouve pas à lui seul la cause : vérifier le statut, l’URL, le type de contenu et le corps reçu.
+
+### Résolution et vérification
+
+Dans **Network → Fetch/XHR → requête → Response**, vérifier que la route est correcte. Corriger l’endpoint PHP pour qu’il renvoie le JSON attendu avec un en-tête approprié :
+
+```php
+header('Content-Type: application/json; charset=utf-8');
+echo json_encode($articles);
+```
+
+Rejouer l’appel et confirmer que la réponse est du JSON valide et que le blog affiche les articles.
+
+**Outils :** Console, Network (**Status**, **Headers**, **Response**), terminal et logs PHP.
+
+---
+
+<!-- _class: light -->
+
+## Erreur 4 — `TypeError: Failed to fetch`
+
+### Problème de départ
+
+Le formulaire ne reçoit aucune réponse de l’API de publication d’un commentaire.
+
+### Lire l’erreur
+
+`Failed to fetch` indique que le navigateur n’a pas obtenu de réponse exploitable. Ce n’est pas à lui seul un code HTTP : la connexion peut être impossible ou bloquée. Examiner la requête dans **Network** et les éventuels messages CORS dans la console.
+
+### Résolution et vérification
+
+1. Vérifier que le serveur PHP fonctionne et que l’URL et le port sont corrects.
+2. Vérifier dans Network si la requête part, son URL, sa méthode et son éventuelle erreur réseau.
+3. Si le navigateur signale CORS, vérifier l’origine et la configuration serveur adaptée ; ne pas désactiver les protections du navigateur.
+4. Rejouer la soumission et confirmer qu’une réponse est reçue.
+
+**Outils :** Console, Network, terminal du serveur PHP et configuration de l’endpoint.
+
+---
+
+## Erreur 5 — réponse HTTP `404` non traitée
+
+### Problème de départ
+
+Le frontend appelle une route d’API incorrecte. Le serveur répond `404`, mais le code essaie de traiter cette réponse comme une réussite.
+
+### Lire l’erreur
+
+À la différence d’une panne réseau, un `404` est une réponse HTTP reçue. `fetch()` ne rejette pas automatiquement sa Promise pour un statut `404` ou `500` : il faut vérifier `response.ok`.
+
+### Résolution
+
+```javascript
+async function loadArticles() {
+  const response = await fetch("/api/articles");
+  if (!response.ok) {
+    throw new Error(`Chargement impossible (HTTP ${response.status})`);
+  }
+  return response.json();
 }
 
-const genres = await response.json();
-console.log(genres);
+loadArticles()
+  .then(renderArticles)
+  .catch((error) => {
+    console.error(error);
+    showError("Les articles ne peuvent pas être chargés.");
+  });
 ```
 
-Le corps peut aussi être vide ou ne pas être du JSON : adaptez le parsing au contrat de l’API.
+Corriger la route si elle est erronée et prévoir un message compréhensible pour l’utilisateur.
 
----
-
-<div class="eyebrow">11 / Workflow de débogage</div>
-
-## Suivre la requête de bout en bout
-
-1. **Console** — relever le message et la ligne concernée.
-2. **Network** — contrôler URL, méthode, statut, payload et réponse.
-3. **Frontend** — vérifier le traitement du statut et le parsing.
-4. **Backend** — lire l’erreur et le contexte dans les logs PHP.
-5. **Reproduire** — corriger une cause à la fois puis refaire la requête.
-
-<div class="callout">Suivez le même appel du navigateur au serveur au lieu de déduire la cause à partir d’un seul message.</div>
+**Vérification :** tester une route valide et une route inexistante ; contrôler le statut, le rendu et l’absence de rejet non traité.
 
 ---
 
 <!-- _class: light -->
 
-<div class="eyebrow">12 / À retenir</div>
+## Google Chrome DevTools : Console et Network
 
-## Observer, localiser, vérifier
+### Console
 
-**Console** &nbsp; + &nbsp; **Network** &nbsp; + &nbsp; **logs serveur** &nbsp; → &nbsp; **diagnostic vérifiable**
+- Lire le type, le texte et la pile de l’erreur JavaScript.
+- Cliquer sur le fichier et la ligne pour ouvrir le code concerné.
+- Utiliser `console.log()` temporairement pour observer une valeur ; retirer les traces de diagnostic inutiles après le test.
 
-- Les familles HTTP orientent vers la zone à inspecter.
-- Les messages JavaScript décrivent le symptôme côté navigateur.
-- Les logs PHP aident à trouver la cause côté serveur.
-- Vérifiez toujours le statut et le format avant de traiter la réponse.
+### Network
+
+1. Ouvrir **Network** avant de reproduire le problème.
+2. Activer **Preserve log** si la navigation efface les requêtes.
+3. Filtrer avec **Fetch/XHR**, puis sélectionner l’appel API.
+4. Vérifier **Request URL**, méthode, **Status**, **Payload**, **Headers** et **Response**.
+5. Comparer le corps réel avec le format attendu par JavaScript.
+
+---
+
+## De l’appel API à la réponse PHP
+
+Pour diagnostiquer un échec, suivre le même appel sur toute la chaîne :
+
+| Étape | À examiner |
+|:--|:--|
+| JavaScript | URL, méthode, données envoyées, traitement de `response.ok` |
+| Network — requête | URL finale, statut, en-têtes et payload |
+| Network — réponse | Corps exact, `Content-Type`, JSON ou HTML |
+| Serveur PHP | Route exécutée, validation, erreur du terminal ou des logs |
+| Vérification | Même requête après correction et résultat affiché dans le blog |
+
+Un statut `500` signale un échec serveur, mais n’indique pas sa cause précise. Consulter les logs PHP côté développement. Ne pas exposer les détails internes ni les traces PHP aux visiteurs en production.
+
+---
+
+## Résolution : vérifier avant et après
+
+Pour chaque erreur, consigner :
+
+- le scénario et le message exact ;
+- le fichier, la ligne ou l’appel API à l’origine du symptôme ;
+- les observations de Console, Network, VS Code et/ou PHP ;
+- la cause confirmée, distincte des hypothèses ;
+- la correction et le résultat du nouveau test.
+
+Tester aussi un cas nominal et un cas d’échec attendu. Une console sans erreur ne suffit pas : vérifier que le comportement du blog est correct.
+
+---
+
+<!-- _class: light -->
+
+## Conclusion
+
+**Lire → localiser → observer → corriger → retester**
+
+À la fin du Lab, vous devez pouvoir :
+
+- expliquer l’origine de cinq erreurs JavaScript représentatives ;
+- utiliser VS Code et Chrome pour exécuter le code pas à pas et examiner les variables ;
+- inspecter les appels API et les réponses du serveur PHP dans Network ;
+- justifier une correction par des observations et des tests reproductibles.
+
+### Livrable
+
+Un compte rendu des cinq erreurs, avec pour chacune le problème, la lecture du message, la résolution, les outils utilisés et la vérification finale.
