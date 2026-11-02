@@ -1,4 +1,4 @@
-# Lab-: Découvrir le principe MVC (Model–View–Controller)
+# Lab-: Découvrir le principe MVC 
 
 ## 1. Définition de MVC
 
