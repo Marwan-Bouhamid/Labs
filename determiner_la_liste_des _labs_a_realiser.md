@@ -12,9 +12,8 @@
 10. prompt task
 11. errors js
 12. MVC
-13. lab starter
+13. lab-starter
 14. comprand laravel
 15. what is lab
 16. lab prepare l'environnement
 17. lab git
-
