@@ -11,7 +11,7 @@ size: 16:9
 # Development<br>Environment
 
 <div class="by">
-  <strong>Etudiant : Mohamed Dghar</strong>
+  <strong>Etudiant : Marwan Bouhamid</strong></br>
   <strong>Prof : ESSARRAJ FOUAD</strong>
   Development Environment Lab
 </div>

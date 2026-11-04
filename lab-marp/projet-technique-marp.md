@@ -24,7 +24,7 @@ footer: "Application Fitness · Marwan Bouhamid"
 ### Gestion des groupes musculaires et des entraînements
 
 **Apprenant :** Marwan Bouhamid  
-**Encadrant :** [Nom et prénom de l'encadrant à compléter]
+**Encadrant :**  ES-SARRAJ FOUAD
 
 <!-- Notes du présentateur : Présenter le contexte de formation, puis annoncer l'application et ses utilisateurs. -->
 
@@ -246,9 +246,9 @@ Le numéro de diapositive est activé avec `paginate: true`. Le thème personnal
 Avec Marp CLI, les exports peuvent aussi être générés ainsi :
 
 ```bash
-npx @marp-team/marp-cli lab-Marp/projet-technique-marp.md --pdf
-npx @marp-team/marp-cli lab-Marp/projet-technique-marp.md --html
-npx @marp-team/marp-cli lab-Marp/projet-technique-marp.md --pptx
+npx @marp-team/marp-cli lab-marp/projet-technique-marp.md --pdf
+npx @marp-team/marp-cli lab-marp/projet-technique-marp.md --html
+npx @marp-team/marp-cli lab-marp/projet-technique-marp.md --pptx
 ```
 
 ---
