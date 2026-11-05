@@ -1,4 +1,4 @@
-- [ ] Comprendre la différence entre les skills et les plugins
+- [x] Comprendre la différence entre les skills et les plugins
 - [ ] Voir un exemple de plugin et de skills
 - [ ] Tester Superpowers et d'autres outils comme GSD
 - [ ] Créer un CRUD avec Superpowers
