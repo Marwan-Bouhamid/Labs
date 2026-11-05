@@ -1,0 +1,12 @@
+- [ ] Comprendre la différence entre les skills et les plugins
+- [ ] Voir un exemple de plugin et de skills
+- [ ] Tester Superpowers et d'autres outils comme GSD
+- [ ] Créer un CRUD avec Superpowers
+- [ ] Décrire chaque skills utilisée
+- [ ] Créer un schéma du flux de travail
+- [ ] Créer des lab sur :
+  - [ ] les skills
+  - [ ] les agents
+  - [ ] les sub-agents
+- [ ] Comprendre la différence entre un agent et un sous-agent
+- [ ] À la fin, créer un plugin avec nos outils et un agent pour nous aider à apprendre. Voir si Superpowers peut aussi nous aider.
