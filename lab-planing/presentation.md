@@ -1,85 +1,168 @@
 ---
 marp: true
 theme: default
-paginate: true
+lang: fr
 size: 16:9
+paginate: true
+header: "Lab Planing — Plan générique des Labs"
+footer: "Marwan Bouhamid | SoliCode Tanger — OFPPT"
 ---
 
-# Préparer un lab technique
-## À partir d’un besoin de blog
+<style>
+section {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 23px;
+  padding: 35px 50px;
+}
+.logo-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e2e8f0;
+  color: #1d4ed8;
+  font-size: 20px;
+  font-weight: bold;
+}
+table {
+  font-size: 16px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+th {
+  background-color: #2563eb;
+  color: white;
+  padding: 6px 9px;
+}
+td {
+  padding: 6px 9px;
+}
+ul {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+li {
+  margin-bottom: 5px;
+}
+code {
+  background-color: #f1f5f9;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+</style>
+
+<!-- _header: "" -->
+<!-- _footer: "" -->
+
+<div class="logo-bar">
+  <span>OFPPT</span>
+  <span>SoliCode Tanger</span>
+</div>
+
+# Lab Planing
+## Plan générique des Labs techniques
+
+### Méthode de préparation et exemple sur mon projet Fitness
+
+- **Présenté par :** Marwan Bouhamid
+- **Encadré par :**  ES-SARRAJ FOUAD
+- **Centre :** SoliCode Tanger (OFPPT)
+- **Cas pratique :** gérer les groupes musculaires d’une application Fitness
+
+<!-- Note: Bonjour, je présente une méthode simple pour préparer les Labs. Je vais l’expliquer avec un exemple de mon projet Fitness. -->
 
 ---
 
-## Plan du lab
+## Plan de la présentation
 
-1. Partir d’un besoin utilisateur
-2. Formuler le problème
-3. Choisir un objectif technique
-4. Décrire la solution à explorer
-5. Définir les critères de réussite
+- **1. Stack technique :** les outils du Lab et du projet
+- **2. Définitions :** les mots importants
+- **3. Problème et besoin :** pourquoi préparer un Lab commun
+- **4. Solution et pratique :** les 7 parties du plan et un exemple Fitness
+- **5. Résultats et conclusion :** les résultats attendus et les apprentissages
 
----
-
-## Du besoin au sujet technique
-
-**Besoin du blog — exemple**
-
-Les lecteurs veulent retrouver facilement un article parmi les nombreuses publications.
-
-**Piste de lab**
-
-Étudier une approche de recherche d’articles et évaluer si une bibliothèque répond au besoin.
-
-> Le besoin guide l’expérience : il ne prescrit pas à lui seul une technologie.
+<!-- Note: La présentation explique d'abord les outils et le besoin, puis montre comment utiliser le plan sur mon projet. -->
 
 ---
 
-## Formuler le problème
+## 1. Stack technique
 
-**Question à résoudre**
+| Outil / technologie | Rôle | Utilisation dans le Lab |
+| :--- | :--- | :--- |
+| **Marp et Markdown** | Écrire et présenter les diapositives | Créer ce support en format 16:9 |
+| **PHP** | Traiter les données côté serveur | Préparer les actions de gestion des groupes |
+| **MySQL et PDO** | Stocker et lire les données | Relier les groupes musculaires à la base de données |
+| **HTML, CSS, JavaScript** | Construire et rendre interactive l’interface | Présenter les pages et les formulaires |
+| **Tailwind CSS** | Appliquer des styles aux pages | Mettre en forme l’interface du projet |
 
-Comment permettre aux lecteurs de retrouver un article à partir de son contenu, sans rendre la recherche difficile à intégrer ou à maintenir ?
-
-**Périmètre**
-
-- Inclure une recherche dans un jeu d’articles de démonstration.
-- Étudier une bibliothèque compatible avec la stack réelle du projet.
-- Exclure, pour ce lab, la création d’un moteur de recherche complet pour tout le blog.
-
----
-
-## Fixer l’objectif d’apprentissage
-
-À la fin du lab, la personne doit pouvoir :
-
-- intégrer la recherche dans une démonstration limitée ;
-- vérifier les résultats sur des requêtes représentatives ;
-- évaluer l’intégration, les fonctionnalités et les limites de la bibliothèque ;
-- justifier si elle convient au besoin du blog.
-
-**Stack :** à choisir selon le projet. Ne pas supposer un framework ou une bibliothèque avant de vérifier les besoins et les prérequis.
+<!-- Note: Marp et Markdown servent à créer les slides. Les autres technologies sont celles indiquées dans mon projet Fitness. -->
 
 ---
 
-## Travail à faire (Solution)
+## 2. Définitions
 
-1. **Préparer** un petit ensemble d’articles avec titres et contenus.
-2. **Choisir** une bibliothèque compatible avec la stack du projet et noter les critères d’évaluation.
-3. **Créer** une page de démonstration permettant de saisir une requête et d’afficher les articles correspondants.
-4. **Tester** plusieurs cas : mot présent dans un titre, mot présent dans le contenu, requête sans résultat et requête vide.
-5. **Consigner** les observations, les difficultés d’intégration et les limites rencontrées.
+- **Lab technique :** un atelier pratique pour apprendre une compétence ou un outil.
+  - *Exemple :* apprendre à gérer les groupes musculaires dans une application.
+- **Plan générique :** une structure commune que l’on adapte au sujet de chaque Lab.
+- **PDO :** un outil PHP pour communiquer avec une base de données.
+- **Groupe musculaire :** une catégorie, par exemple les pectoraux ou le dos, associée aux entraînements.
+
+<!-- Note: Le plan est commun, mais les exemples et les outils changent selon le sujet du Lab. -->
 
 ---
 
-## Vérifier et conclure
+## 3. Problème et besoin
 
-### Critères de réussite
+| Aspect | Sans Lab bien préparé | Besoin pour mon projet Fitness |
+| :--- | :--- | :--- |
+| **Organisation** | Les informations des séances sont difficiles à retrouver | Organiser les entraînements et les groupes au même endroit |
+| **Présentation** | Les étapes du travail ne sont pas toujours claires | Expliquer le sujet, les outils et les étapes |
+| **Pratique** | Les tests peuvent être oubliés | Vérifier les formulaires avec plusieurs données |
+| **Résultat** | Il est difficile de savoir si le Lab est terminé | Définir des résultats que l’on peut observer |
 
-- La recherche s’exécute sur les données de démonstration.
-- Les résultats correspondent aux cas de test définis.
-- Le comportement sans résultat et avec une requête vide est observé.
-- Les avantages et limites de la bibliothèque sont documentés.
+**Besoin du Lab :** apprendre à préparer un atelier clair pour tester l’affichage et l’ajout d’un groupe musculaire.
 
-### Conclusion attendue
+<!-- Note: Mon projet vise à organiser les entraînements. Le Lab limite le travail à une fonction précise : afficher et ajouter un groupe musculaire. -->
 
-Répondre à la question de départ à partir des tests : la bibliothèque convient-elle à ce besoin ? Expliquer pourquoi et signaler ce qui reste à vérifier avant une intégration au blog.
+---
+
+## 4. Solution et pratique
+
+### Préparer le Lab en 5 étapes
+
+1. **Choisir** un sujet précis.
+2. **Expliquer** les mots importants.
+3. **Présenter** le problème et le besoin.
+4. **Décrire** les étapes de la pratique.
+5. **Vérifier** les résultats avec des tests.
+
+### Exemple : Lab « Ajouter un groupe musculaire »
+
+| Partie | Contenu du plan générique | Exemple dans mon projet |
+| :---: | :--- | :--- |
+| **1** | Garde : titre et participants | Ajouter un groupe musculaire |
+| **2** | Plan : annoncer les parties | Outils, définitions, besoin, pratique, résultats |
+| **3** | Stack : outils utilisés | PHP, MySQL, PDO, HTML et CSS |
+| **4** | Définitions : mots importants | Groupe musculaire, formulaire, base de données |
+| **5** | Problème : besoin à résoudre | Organiser les groupes liés aux entraînements |
+| **6** | Pratique : étapes et tests | Afficher la liste, ajouter un groupe, tester le formulaire |
+| **7** | Résultats : bilan du Lab | Vérifier l’affichage et noter les tests à compléter |
+
+<!-- Note: Le plan contient sept parties. Pour cet exemple, le travail porte sur l'affichage et l'ajout; les tests restent à réaliser et à documenter. -->
+
+---
+
+## 5. Résultats et conclusion
+
+| Domaine | Résultat attendu |
+| :--- | :--- |
+| **Méthode** | Préparer un Lab avec un plan commun en 7 parties |
+| **Projet Fitness** | Afficher et ajouter un groupe musculaire |
+| **Vérification** | Tester le formulaire avec des données différentes |
+| **Apprentissage** | Expliquer le rôle des outils et les étapes du travail |
+
+**Conclusion :** ce plan aide à présenter chaque Lab dans un ordre simple. Il faut ensuite adapter les exemples au projet et montrer les résultats réellement vérifiés.
+
+<!-- Note: Les tests de tous les formulaires sont encore à réaliser. Je ne présente donc pas ces résultats comme déjà validés. -->
