@@ -6,5 +6,5 @@
   - [ ] les skills
   - [ ] les agents
   - [ ] les sub-agents
-- [ ] Comprendre la différence entre un agent et un sous-agent
+- [x] Comprendre la différence entre un agent et un sous-agent
 - [ ] À la fin, créer un plugin avec nos outils et un agent pour nous aider à apprendre. Voir si Superpowers peut aussi nous aider.
