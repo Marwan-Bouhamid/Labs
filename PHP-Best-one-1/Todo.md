@@ -1,0 +1,22 @@
+# PHP lab checklist
+
+- [x] Merge the staged structure of the second lab with the practical example of the first lab.
+- [x] Keep the namespaced task-tracker code and its native checks.
+- [x] Reorganise the `User` example so its folders match its namespaces.
+- [x] Make `Loggable` testable by storing log entries instead of echoing them.
+- [x] Add `ValidationException` with a failing field and the lab's `422` convention.
+- [x] Extend the autoloader to serve the `PhpLab\` and `App\` roots.
+- [x] Add the fourth check for the practical `User` example.
+- [x] Add a full demonstration and a focused `User` demonstration.
+- [x] Expand the benchmark with a mechanism-selection table and the trait precedence rule.
+- [x] Update the skill specification and the `php-learning` skill to cover both examples.
+- [x] Merge the `.agents` rules into one non-contradictory set.
+- [x] Add a root `AGENTS.md` entry point aligned with `.agents/`.
+- [x] Add the improved lab-creation skills (`lab-creator`, `lab-presenter`, `marp`, `php-examples`, `lab-auditor`, `lab-debugger`, `skill-creator`).
+- [x] Rebuild the presentation as a complete Marp deck with speaker notes.
+- [x] Update the report with the integration decisions and the observed results.
+- [x] Run `php -l` on every PHP file.
+- [x] Run `php 4.realisation/tests/run.php` and confirm four `PASS` lines.
+- [x] Run both demonstrations and confirm their output.
+- [x] Verify every relative link in the README and the agent README.
+- [x] Confirm the presentation has no conclusion or thank-you slide.
