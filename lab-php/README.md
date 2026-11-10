@@ -1,84 +1,256 @@
-# PHP Lab — Best Edition
+# PHP Lab — Generation Specification and Learner Guide
 
-A merged, improved version of the two PHP labs:
+This README is the source of truth for creating, adapting, running, and
+auditing this PHP lab. An agent must read it before changing the lab. It
+describes the learning target, the expected files, the implementation
+constraints, the validation commands, and the definition of done.
 
-- `Labs/lab-php` — the compact first lab with the `pratique/` example and a
-  Marp presentation.
-- `agent vs subagent/lab-PHP` — the staged second lab with the task tracker,
-  native tests, benchmark, report, and `.agents` learning skill.
+The lab slug is **`lab-php`**. Keep this folder name unchanged.
 
-This folder keeps the strongest parts of both and adds the pieces that were
-missing from each one. The result is a single self-contained lab that can be
-taught, studied, run, audited, and presented.
+## 1. Purpose
 
-## What was integrated
+Create a small, runnable PHP learning lab that teaches three related concepts:
 
-| Element | Originally in | What changed in this version |
-| --- | --- | --- |
-| Staged structure (`1.besoin` → `5.rapport-et-presentation`) | Second lab | Kept and documented as the main learning path. |
-| Task-tracker example (`Task`, `Project`, `TaskBoard`) | Second lab | Kept; autoloader extended to serve two namespace roots. |
-| Native PHP checks | Second lab | Kept; a fourth check now covers the practical `User` example. |
-| Official-manual benchmark | Second lab | Kept; expanded with a "choosing the right mechanism" section. |
-| `pratique/` `User` example | First lab | Reorganised into real namespace folders, made testable, and given its own demo. |
-| Marp presentation | First lab | Rebuilt as a complete deck with agenda, code, demo output, speaker notes, and no thank-you slide. |
-| `php-learning` skill | Second lab | Extended to cover both examples, all four checks, and the reflection step. |
-| Lab-creation skills (`lab-creator`, `lab-presenter`, `marp`, `php-examples`, `lab-auditor`, `lab-debugger`, `skill-creator`) | `Labs/.agents` | Copied into this lab, translated to English, and aligned with this lab's conventions. |
-| Rules (`php-lab`, `lab-workflow`, `global-standards`) | Both labs and `Labs/.agents` | Merged into one small, non-contradictory rule set. |
+1. **Namespaces** — organize classes and allow two classes to use the short
+   name `Task` without a collision.
+2. **Traits** — share a small group of methods between unrelated classes.
+3. **Errors and exceptions** — validate input, report domain failures with
+   useful exception types, and convert one selected user warning into an
+   `ErrorException`.
 
-## Learning goals
+The lab must be understandable to a beginner, executable from a terminal, and
+supported by native PHP checks. It is not a framework tutorial or a production
+task-management application.
 
-At the end of the lab you can:
+## 2. Important context
 
-1. Explain what a namespace is and why two classes can both be called `Task`.
-2. Explain what a trait is, how it differs from inheritance, and when to use it.
-3. Explain how PHP represents errors and exceptions, and why a custom exception
-   is more useful than a vague warning.
-4. Show how `set_error_handler()` can convert one enabled `E_USER_WARNING` into
-   an `ErrorException`, and state the limits of that technique.
-5. Run the examples and the checks, read the output, and describe only what you
-   actually observed.
+The lab contains two complementary examples:
 
-## The two examples
+- **Task tracker (`PhpLab\...`)**: the main example. It demonstrates two
+  namespaced `Task` classes, a shared timestamp trait, task lookup, custom
+  exceptions, and controlled warning conversion.
+- **User account (`App\...`)**: the applied example. It demonstrates a
+  namespaced `User`, a `Loggable` trait, and a typed `ValidationException`.
 
-The lab deliberately uses two small models:
+The task tracker and the user account are teaching choices. Do not describe
+them as requirements of PHP.
 
-- **Task tracker (`PhpLab\...`)** — the main example. `Task` and `Project` share
-  the `HasTimestamps` trait; `PhpLab\Domain\Task` and `PhpLab\Reporting\Task`
-  prove that namespaces prevent a name collision; `TaskBoard` and
-  `WarningToException` demonstrate domain exceptions and warning conversion.
-- **User account (`App\...`)** — the applied example from the first lab.
-  `User` validates its input with `ValidationException` and records its creation
-  through the `Loggable` trait. Its folders now match its namespaces:
-  `App\Models`, `App\Traits`, and `App\Exceptions`.
+If the learner's concrete problem or proposed solution is not supplied, do not
+invent either one. Leave these fields for completion:
 
-## Requirements
+```text
+[TO COMPLETE: What concrete problem does the learner encounter?]
+[TO COMPLETE: What solution does the learner propose?]
+```
 
-- PHP 8.2 or newer on the command line. The reference run used PHP 8.5.11.
-- Basic PHP syntax, variables, functions, arrays, and simple classes.
-- No Composer packages, database, or framework.
+## 3. Agent versus subagent
 
-Check your version:
+### Agent
+
+The **agent** owns the complete task. It:
+
+- reads the README, `AGENTS.md`, existing deliverables, and relevant code;
+- decides which files need changing;
+- coordinates research, implementation, tests, documentation, and audit;
+- preserves unrelated work in the repository;
+- reports observed results honestly.
+
+Use an agent when the request involves the whole lab, several dependent files,
+or a final quality decision.
+
+### Subagent
+
+A **subagent** is a bounded helper working under the agent's direction. Give it
+one concrete objective and a clear output, for example:
+
+- inspect official PHP documentation for namespaces;
+- audit Markdown links;
+- run the PHP checks and report exact output;
+- review the generated lab against this README.
+
+A subagent must not silently redefine the learning objectives, invent a
+student problem, rewrite unrelated files, or claim that a test passed without
+running it. The main agent must review and integrate its result.
+
+### Recommended delegation
+
+Delegate only work that is independent and substantial enough to benefit from a
+separate context. Keep the implementation and final integration in the main
+agent. For a small README-only change, use the main agent directly.
+
+## 4. Prerequisites and constraints
+
+### Learner prerequisites
+
+The learner should know basic PHP syntax, variables, functions, arrays, and
+simple classes. The lab may briefly explain class and object terminology when
+needed.
+
+### Technical constraints
+
+- Use PHP **8.2 or newer** from the command line.
+- Use native PHP only: no Composer package, database, or framework is required.
+- Use the official PHP manual for language behavior.
+- Keep examples small, deterministic, readable, and runnable on Windows,
+  macOS, and Linux where PHP is available.
+- Keep code identifiers, namespaces, commands, and file names in English.
+- Preserve the staged structure:
+  `1.besoin`, `2.benchmark`, `3.spec-skill`, `4.realisation`,
+  `5.rapport-et-presentation`, and `.agents`.
+- Do not add a conclusion, thank-you, or “questions?” slide.
+- Do not run Git commands unless the user explicitly requests them.
+
+### Accuracy constraints
+
+- Separate PHP language behavior from this lab's design choices.
+- Never invent a PHP version, test result, student difficulty, solution,
+  performance claim, or observed output.
+- A custom error handler cannot handle every PHP error. State its limits.
+- The `422` code on `ValidationException` is an application convention; PHP
+  does not automatically make it an HTTP response.
+- A trait is not a class that can be instantiated by itself.
+
+## 5. Required learning outcomes
+
+At the end of the lab, the learner can:
+
+1. Explain the purpose of a namespace and identify a fully qualified class
+   name.
+2. Explain why `PhpLab\Domain\Task` and `PhpLab\Reporting\Task` can coexist.
+3. Explain how `Task` and `Project` reuse `HasTimestamps`.
+4. Explain why `User` composes `Loggable` instead of inheriting from it.
+5. Distinguish invalid input, a missing task, and a converted warning.
+6. Explain that `set_error_handler()` handles only selected, enabled errors.
+7. Run the checks and explain what each passing check demonstrates.
+
+## 6. Required deliverables
+
+Keep the following files and keep their responsibilities separate.
+
+### `1.besoin/besoin.md`
+
+Document:
+
+- the learning question;
+- scope and prerequisites;
+- the three concepts;
+- the two examples;
+- non-goals;
+- observable success criteria;
+- placeholders for the learner's real problem and proposed solution when they
+  are unknown.
+
+### `2.benchmark/benchmark.md`
+
+Explain the PHP behavior behind the examples and link to official sources for:
+
+- namespaces;
+- traits and trait precedence;
+- `Throwable`, `Exception`, and `Error`;
+- `finally`;
+- `set_error_handler()`;
+- `ErrorException`;
+- `trigger_error()`.
+
+Include a short table explaining which mechanism is used for each situation.
+Mark the task tracker and `User` model as teaching choices.
+
+### `3.spec-skill/spec-skill.md`
+
+Specify the learner-facing skill with the exact sections:
+
+- name;
+- purpose;
+- input;
+- steps;
+- expected student output.
+
+Keep it aligned with the runnable `.agents/skills/php-learning/SKILL.md`.
+
+### `4.realisation/`
+
+Provide:
+
+- `bootstrap.php` for the `PhpLab\` and `App\` namespace roots;
+- `demo.php` showing the three main concepts;
+- `pratique/demo.php` showing the applied `User` example;
+- the task-tracker source under `src/`;
+- the applied source under `pratique/`;
+- native checks under `tests/`.
+
+The minimum source design is:
+
+```text
+4.realisation/
+├── bootstrap.php
+├── demo.php
+├── pratique/
+│   ├── Exceptions/ValidationException.php
+│   ├── Models/User.php
+│   ├── Traits/Loggable.php
+│   ├── demo.php
+│   └── README.md
+├── src/
+│   ├── Domain/Project.php
+│   ├── Domain/Task.php
+│   ├── Domain/TaskBoard.php
+│   ├── ErrorHandling/WarningToException.php
+│   ├── Exceptions/TaskNotFoundException.php
+│   ├── Reporting/Task.php
+│   └── Support/HasTimestamps.php
+└── tests/
+    ├── TestSupport.php
+    ├── errors-and-exceptions.php
+    ├── namespaces.php
+    ├── pratique.php
+    ├── run.php
+    └── traits.php
+```
+
+Use the existing implementation as prior art before adding a new abstraction.
+If the implementation is changed, update the matching check and the directly
+related documentation.
+
+### `5.rapport-et-presentation/`
+
+The report must contain only researched facts and observed results. Record the
+commands used and their actual output after running them.
+
+The presentation must be valid Marp, readable in 16:9, and contain:
+
+1. the learning context;
+2. the three concepts;
+3. the examples;
+4. the implementation choices;
+5. the observed check or demonstration output.
+
+Do not invent a learner problem. Use the placeholder above if it is unknown.
+Do not add a conclusion, thank-you, or question slide.
+
+### `.agents/`
+
+Keep the rules and skills self-contained. In particular:
+
+- `AGENTS.md` is the short entry point;
+- `.agents/rules/` contains PHP accuracy, workflow, and global standards;
+- `.agents/skills/php-learning/SKILL.md` matches the specification;
+- lab creation, presentation, Marp, PHP examples, audit, debugging, and skill
+  creation guidance remains available where applicable.
+
+The folder name of every skill must match the `name` field in its `SKILL.md`.
+
+## 7. Quick Start
+
+Run these commands from `lab-php`:
 
 ```powershell
 php -v
-```
-
-## Quick start
-
-From this folder:
-
-```powershell
-# Run every check (four PASS lines expected)
 php 4.realisation/tests/run.php
-
-# Run the full demonstration
 php 4.realisation/demo.php
-
-# Run the focused User demonstration
 php 4.realisation/pratique/demo.php
 ```
 
-Run one concept at a time while studying:
+Run one focused check while studying:
 
 ```powershell
 php 4.realisation/tests/namespaces.php
@@ -87,106 +259,89 @@ php 4.realisation/tests/errors-and-exceptions.php
 php 4.realisation/tests/pratique.php
 ```
 
-## Lab map
+The full runner should print four `PASS` lines and exit with code `0`. This is
+an expected acceptance criterion, not a result to claim without running it.
 
-### Learning path
+## 8. Verification protocol
 
-- [`1.besoin/besoin.md`](1.besoin/besoin.md) — learning need, scope,
-  prerequisites, non-goals, and observable success criteria.
-- [`2.benchmark/benchmark.md`](2.benchmark/benchmark.md) — source-based
-  explanation of namespaces, traits, errors, exceptions, and warning handling.
-- [`3.spec-skill/spec-skill.md`](3.spec-skill/spec-skill.md) — the student
-  learning skill specification.
-- [`4.realisation/README.md`](4.realisation/README.md) — setup, examples, and
-  test commands.
-- [`4.realisation/demo.php`](4.realisation/demo.php) — one runnable tour of all
-  three concepts.
-- [`4.realisation/bootstrap.php`](4.realisation/bootstrap.php) — autoloads the
-  `PhpLab\` and `App\` namespace roots.
-- [`4.realisation/src/Domain/Task.php`](4.realisation/src/Domain/Task.php) —
-  domain task, title validation, and timestamps.
-- [`4.realisation/src/Domain/Project.php`](4.realisation/src/Domain/Project.php)
-  — project using the shared timestamp trait.
-- [`4.realisation/src/Domain/TaskBoard.php`](4.realisation/src/Domain/TaskBoard.php)
-  — task lookup and missing-task exception.
-- [`4.realisation/src/Exceptions/TaskNotFoundException.php`](4.realisation/src/Exceptions/TaskNotFoundException.php)
-  — exception for an unknown task ID.
-- [`4.realisation/src/ErrorHandling/WarningToException.php`](4.realisation/src/ErrorHandling/WarningToException.php)
-  — controlled warning conversion.
-- [`4.realisation/src/Reporting/Task.php`](4.realisation/src/Reporting/Task.php)
-  — a second `Task` class in a separate namespace.
-- [`4.realisation/src/Support/HasTimestamps.php`](4.realisation/src/Support/HasTimestamps.php)
-  — timestamp behavior shared by domain classes.
-- [`4.realisation/pratique/README.md`](4.realisation/pratique/README.md) — the
-  practical `User` example and its design notes.
-- [`4.realisation/pratique/Models/User.php`](4.realisation/pratique/Models/User.php)
-  — validated account model using a trait and a custom exception.
-- [`4.realisation/pratique/Traits/Loggable.php`](4.realisation/pratique/Traits/Loggable.php)
-  — testable activity log shared by models.
-- [`4.realisation/pratique/Exceptions/ValidationException.php`](4.realisation/pratique/Exceptions/ValidationException.php)
-  — typed validation failure with field and code.
-- [`4.realisation/tests/TestSupport.php`](4.realisation/tests/TestSupport.php) —
-  small helpers for native PHP checks.
-- [`4.realisation/tests/namespaces.php`](4.realisation/tests/namespaces.php) —
-  checks the two distinct `Task` classes.
-- [`4.realisation/tests/traits.php`](4.realisation/tests/traits.php) — checks
-  timestamp reuse and independent updates.
-- [`4.realisation/tests/errors-and-exceptions.php`](4.realisation/tests/errors-and-exceptions.php)
-  — checks validation, lookup, and warning handling.
-- [`4.realisation/tests/pratique.php`](4.realisation/tests/pratique.php) —
-  checks the `User` model, its logs, and its validation errors.
-- [`4.realisation/tests/run.php`](4.realisation/tests/run.php) — runs all four
-  checks.
+Before declaring the lab complete:
+
+1. Read the files changed and inspect related existing files.
+2. Run `php -l` on every changed PHP file.
+3. Run the focused check for every changed concept.
+4. Run the full check:
+
+   ```powershell
+   php 4.realisation/tests/run.php
+   ```
+
+5. Run both demonstrations.
+6. Check every relative Markdown link in the lab.
+7. Check that the README matches the actual file tree.
+8. Check that the skill specification and executable skill agree.
+9. Check that the presentation has valid Marp frontmatter and no forbidden
+   conclusion or thank-you slide.
+10. Report failures explicitly instead of converting them into success claims.
+
+## 9. Definition of done
+
+The lab is complete only when all of the following are true:
+
+- the staged folders exist and are documented;
+- the examples run without Composer, a database, or a framework;
+- the four native checks pass;
+- the demonstrations run;
+- official PHP sources support the language claims;
+- the two examples and their namespaces agree across code and documentation;
+- all relative links resolve;
+- the skill specification and runnable skill are aligned;
+- the report contains observed results only;
+- the presentation is valid and follows the slide restrictions;
+- no unrelated files were rewritten.
+
+## 10. Copy-ready generation prompt
+
+Use the following prompt when asking an agent to create or adapt this lab:
+
+> You are the main agent responsible for the `lab-php` PHP learning lab.
+> Read `lab-php/README.md`, `lab-php/AGENTS.md`, the existing staged
+> deliverables, and the current implementation before editing.
+>
+> Build or adapt a beginner-friendly, runnable PHP 8.2+ lab about namespaces,
+> traits, and errors/exceptions. Preserve the `lab-php` slug and the staged
+> folders. Reuse existing code where it is correct. Do not use Composer, a
+> database, or a framework.
+>
+> Deliver the learning need, official-manual benchmark, aligned learner skill
+> specification, runnable task-tracker and `User` examples, native checks,
+> report, and Marp presentation described in the README.
+>
+> Do not invent the learner's real problem, proposed solution, PHP version,
+> test result, output, or performance claim. If the problem or solution is
+> unknown, keep the `[TO COMPLETE: ...]` placeholders. Distinguish PHP rules
+> from teaching choices. Do not claim that a custom error handler handles
+> every PHP error.
+>
+> After editing, run `php -l` on changed PHP files, the focused checks, the
+> full runner, and both demonstrations. Check Markdown links and Marp
+> frontmatter. Report exact commands, observed results, failures, and files
+> changed. Do not run Git commands unless explicitly authorized.
+
+## 11. Current lab map
+
+- [`1.besoin/besoin.md`](1.besoin/besoin.md) — learning need and outcomes.
+- [`2.benchmark/benchmark.md`](2.benchmark/benchmark.md) — official PHP
+  references and language explanations.
+- [`3.spec-skill/spec-skill.md`](3.spec-skill/spec-skill.md) — learner skill
+  specification.
+- [`4.realisation/README.md`](4.realisation/README.md) — runnable lab guide.
+- [`4.realisation/demo.php`](4.realisation/demo.php) — integrated demonstration.
+- [`4.realisation/pratique/README.md`](4.realisation/pratique/README.md) —
+  applied `User` example.
 - [`5.rapport-et-presentation/rapport.md`](5.rapport-et-presentation/rapport.md)
-  — research, implementation, integration decisions, and observed outcomes.
+  — research and observed results.
 - [`5.rapport-et-presentation/presentation.md`](5.rapport-et-presentation/presentation.md)
-  — complete Marp deck with speaker notes.
-
-### Agent configuration
-
-- [`AGENTS.md`](AGENTS.md) — the short entry point for any coding agent.
-- [`.agents/README.md`](.agents/README.md) — how the rules and skills fit
-  together and how to invoke them.
-- [`.agents/rules/php-lab.md`](.agents/rules/php-lab.md) — PHP-specific accuracy
-  and verification rules.
-- [`.agents/rules/lab-workflow.md`](.agents/rules/lab-workflow.md) — the
-  create → run → verify → document workflow.
-- [`.agents/rules/global-standards.md`](.agents/rules/global-standards.md) —
-  language, structure, honesty, and presentation conventions.
-- [`.agents/skills/php-learning/SKILL.md`](.agents/skills/php-learning/SKILL.md)
-  — the student-facing study workflow.
-- [`.agents/skills/lab-creator/SKILL.md`](.agents/skills/lab-creator/SKILL.md)
-  — build or adapt lab deliverables from a README and a plan.
-- [`.agents/skills/lab-presenter/SKILL.md`](.agents/skills/lab-presenter/SKILL.md)
-  — create and structure lab presentations.
-- [`.agents/skills/marp/SKILL.md`](.agents/skills/marp/SKILL.md) — Marp syntax,
-  layout, and readability rules.
-- [`.agents/skills/php-examples/SKILL.md`](.agents/skills/php-examples/SKILL.md)
-  — create runnable PHP examples with tutorials.
-- [`.agents/skills/lab-auditor/SKILL.md`](.agents/skills/lab-auditor/SKILL.md)
-  — audit deliverables for completeness and consistency.
-- [`.agents/skills/lab-debugger/SKILL.md`](.agents/skills/lab-debugger/SKILL.md)
-  — diagnose PHP, JavaScript, and Laravel failures.
-- [`.agents/skills/skill-creator/SKILL.md`](.agents/skills/skill-creator/SKILL.md)
-  — create and validate new Agent Skills.
-- [`Todo.md`](Todo.md) — the full progress checklist.
-
-## Success criteria
-
-You can explain the role of each concept in your own words, point to its
-example, run the matching check, and describe only the result you observed. You
-can also explain why the practical `User` example uses a namespace, a trait, and
-a custom exception together.
-
-## Accuracy
-
-The benchmark cites the official PHP manual for language behavior. The task
-tracker and the `User` model are teaching choices, not rules required by PHP.
-The warning example is deliberately narrow: a custom error handler cannot handle
-every PHP error, and this lab does not claim otherwise.
-
-## Language
-
-The lab deliverables are in English, matching both source labs and the code.
-The agent rules explain how to switch to another language for a different cohort
-without rewriting the code.
+  — Marp presentation.
+- [`AGENTS.md`](AGENTS.md) — repository entry point for agents.
+- [`.agents/README.md`](.agents/README.md) — local rules and skills.
+- [`Todo.md`](Todo.md) — project checklist.
