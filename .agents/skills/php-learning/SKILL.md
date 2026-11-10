@@ -19,7 +19,7 @@ exceptions, plus the matching concept in the task-tracker or `User` example.
 
 1. Ask the learner to explain what they currently understand in their own words.
 2. Read the matching section in
-   [the benchmark](../../../2.benchmark/benchmark.md) and follow its linked
+   [the benchmark](../../../lab-php/2.benchmark/benchmark.md) and follow its linked
    official PHP manual source.
 3. Inspect the matching example:
 

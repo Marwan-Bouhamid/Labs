@@ -1,56 +1,84 @@
 ---
 name: php-examples
-description: Creates, adapts, and validates PHP examples with a step-by-step tutorial for each topic, following the project's PHP version and architecture. Use when asked for PHP exercises, lab examples, runnable snippets, or examples of exceptions, namespaces, traits, or Laravel conventions.
+description: "Create, adapt, and validate PHP examples with a step-by-step tutorial for each topic, following the project's PHP version and architecture. Use when asked for PHP exercises, lab examples, runnable snippets, or examples of exceptions, namespaces, traits, or Laravel conventions."
 ---
 
 # PHP Example Creator
 
-## Rôle
+## Role
 
-Créer des exemples PHP courts, compréhensibles, exécutables et adaptés au projet réel de l'utilisateur.
+Create short, understandable, runnable PHP examples that match the real project
+and teach one idea at a time.
 
-## Quand utiliser cette skill
+## When to use this skill
 
-Utilise-la pour créer ou adapter des exercices PHP, des exemples de notions du langage, des démonstrations Laravel ou du contenu pratique pour un lab. Ne l'utilise pas pour réécrire une application complète sans demande explicite.
+Use it for PHP exercises, language demonstrations, lab examples, or adaptations
+of an existing snippet. Do not use it to rewrite a whole application unless the
+user explicitly asks.
 
-## Entrées et contexte
+## Inputs and context
 
-- Lis le README ou le brief fourni et les fichiers voisins de la destination demandée.
-- Examine `composer.json`, les instructions applicables et le code pertinent pour identifier la version PHP, le framework, l'autoload et les conventions réelles.
-- Repère si l'exemple peut utiliser des classes ou services existants. N'invente pas de modèles, de dépendances, de versions ou de problèmes vécus.
-- Si un détail manque mais qu'une hypothèse simple permet d'avancer, choisis un exemple autonome et signale clairement ce qui est simulé. Demande une précision seulement si le choix change sensiblement le résultat.
+- Read the README or brief and the files next to the destination.
+- Inspect `composer.json`, the PHP version, the autoloader, and the relevant
+  code before choosing syntax.
+- Look for existing classes or services the example can reuse. Do not invent
+  models, dependencies, versions, or problems.
+- If a detail is missing but a simple assumption lets you proceed, choose a
+  standalone example and mark clearly what is simulated. Ask only when the
+  choice would change the result significantly.
 
-## Procédure
+## Procedure
 
-1. Reformule le livrable attendu et choisis le chemin demandé. Préserve les fichiers existants; ne les remplace pas sans examiner leur contenu.
-2. Déduis la version PHP et les dépendances à partir des fichiers du projet. N'utilise que des fonctions, syntaxes et commandes compatibles.
-3. Crée un sous-dossier par notion ou exercice lorsque plusieurs exemples sont demandés. Dans chaque sous-dossier, fournis un fichier PHP exécutable nommé `exemple.php` et un `tutoriel.md` associé. Si une structure existante impose d'autres noms, conserve-la et documente clairement le chemin de l'exemple.
-4. Dans chaque tutoriel, explique l'exemple lui-même, pas seulement la notion : parcours les lignes ou blocs importants dans l'ordre d'exécution, définis le rôle des éléments PHP employés, et relie chaque étape à son effet observable. Indique aussi l'objectif, les fichiers concernés, la commande à exécuter depuis un répertoire précis, le résultat attendu, le lien avec l'architecture du projet et une limite ou un exercice complémentaire. Adapte le niveau de détail à la demande.
-5. Relie chaque exemple à un cas d'usage concret du projet. Distingue clairement une démonstration autonome d'une fonctionnalité réellement intégrée.
-6. Garde le code petit et pédagogique : entrées explicites, noms descriptifs, types lorsque le projet les utilise et sorties observables. Montre les exceptions traitées à une frontière appropriée; emploie les namespaces selon l'autoload réel; n'emploie un trait que pour un comportement partagé qui s'y prête.
-7. Ajoute ou actualise un README parent qui liste chaque notion, son exemple et son tutoriel, avec les commandes de démarrage quand plusieurs dossiers sont concernés.
-8. Valide les fichiers PHP avec `php -l` si PHP est disponible. Lance les tests ciblés pertinents si le projet en possède. Si les outils manquent, ne prétends pas avoir exécuté les exemples et indique précisément la vérification à effectuer.
-9. Résume les fichiers créés, les commandes d'exécution, le résultat de validation et les limites éventuelles.
+1. Restate the expected deliverable and choose the requested path. Preserve
+   existing files; inspect before replacing.
+2. Infer the PHP version and dependencies from the project files. Use only
+   compatible functions, syntax, and commands.
+3. Create one subfolder per concept or exercise when several examples are
+   requested. In each subfolder, provide a runnable PHP file and an associated
+   `tutoriel.md` (or `README.md` when the project uses that convention).
+4. In each tutorial, explain the example itself, not only the concept:
+   - walk through the important lines in execution order;
+   - define the role of each PHP element used;
+   - connect each step to its observable effect;
+   - state the goal, the files, the command, the expected output, the link to
+     the project architecture, and one limit or extension.
+5. Connect each example to a concrete project use case. Distinguish a standalone
+   demonstration from a feature that is really integrated.
+6. Keep the code small and pedagogical: explicit inputs, descriptive names,
+   types when the project uses them, and observable output. Handle exceptions at
+   an appropriate boundary; use namespaces according to the real autoloader; use
+   a trait only for behavior that genuinely fits.
+7. Add or update a parent README that lists each concept, its example, its
+   tutorial, and the startup commands.
+8. Validate every PHP file with `php -l`. Run the project's targeted tests when
+   they exist.
+9. Report the files created, the commands, the validation result, and any
+   limitation truthfully.
 
-## Règles
+## Rules
 
-- Réponds dans la langue de la demande, en préservant la langue et le style des fichiers existants.
-- N'intègre pas une démonstration au framework si elle peut être plus clairement exécutée seule; si elle dépend de Laravel, respecte ses conventions plutôt que de simuler ses APIs.
-- N'expose pas de secrets et ne modifie jamais `.env`.
-- Évite les dépendances supplémentaires pour de simples exemples du langage.
-- Ne présente pas une donnée fictive comme une donnée réelle, ni un exercice autonome comme du code déjà intégré.
-- Limite les modifications aux fichiers demandés et aux documents d'exécution nécessaires.
+- Respond in the language of the request while preserving the language and
+  style of existing files.
+- Do not integrate a demonstration into a framework when it is clearer as a
+  standalone script.
+- Do not expose secrets and never modify `.env`.
+- Avoid extra dependencies for simple language examples.
+- Do not present fictional data as real data or a standalone exercise as
+  already integrated code.
+- Limit changes to the requested files and the necessary run instructions.
 
-## Exemples de demandes
+## Example requests
 
-- « Crée un exemple PHP d'exception pour le formulaire de création d'article. »
-- « Prépare trois exercices exécutables sur les namespaces, les traits et les exceptions. »
-- « Adapte cet exemple PHP à la version et à l'autoload Composer de mon projet. »
+- "Create a PHP exception example for the article creation form."
+- "Prepare three runnable exercises on namespaces, traits, and exceptions."
+- "Adapt this PHP example to my project's PHP version and Composer autoload."
 
-## Vérification finale
+## Final verification
 
-- Chaque notion demandée possède un sous-dossier avec un exemple PHP et son tutoriel associé, sauf convention existante documentée.
-- Chaque tutoriel explique concrètement les lignes ou blocs importants de son exemple et le chemin d'exécution jusqu'au résultat.
-- Les exemples respectent la version et les conventions constatées.
-- Le README parent référence les exemples, les tutoriels et les commandes valides.
-- Le statut des vérifications est rapporté sans exagération.
+- [ ] Each requested concept has a subfolder with a PHP example and a tutorial,
+      unless an existing documented convention says otherwise.
+- [ ] Each tutorial explains the important lines and the path from input to
+      output.
+- [ ] The examples match the observed PHP version and conventions.
+- [ ] The parent README references the examples, tutorials, and valid commands.
+- [ ] `php -l` was run on every PHP file, and the result is reported accurately.

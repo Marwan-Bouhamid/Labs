@@ -1,6 +1,6 @@
 ---
 name: skill-creator
-description: Creates, structures, reviews, improves, and validates Agent Skills that follow the agentskills.io open standard and work in Google Antigravity. Use when the user asks to create a skill, write a SKILL.md, package agent instructions, or update an existing skill.
+description: Creates, structures, reviews, improves, and validates Agent Skills that follow the agentskills.io open standard and work in Google Antigravity. Use when the user asks to create a skill, write a SKILL.md, package agent instructions, or update an existing skill, including the lab-specific skills in this repository.
 ---
 
 # Skill Creator
@@ -36,6 +36,8 @@ Use the user's description and available project context first. Ask a concise cl
 Before creating files:
 - Determine the workspace root.
 - Check whether `.agents/skills/` exists.
+- Read `.agents/README.md` and the root README when they exist, so the new
+  skill fits the documented set instead of duplicating it.
 - Check for an existing skill with the proposed name or similar purpose.
 - Inspect relevant `AGENTS.md`, project documentation, coding standards, and existing skills when they are available.
 - Reuse established project conventions without copying unrelated instructions.
@@ -110,6 +112,7 @@ For references and assets:
 - If a different name is more appropriate, choose a clear, unique kebab-case name.
 - Do not place a skill's `SKILL.md` directly in `.agents/skills/`; each skill must have its own subfolder.
 - Keep paths and references consistent with the final folder name.
+- When the skill belongs to a lab, add it to `.agents/README.md` and to the root README skill list; keep those lists accurate.
 
 ### 7. Validate the result
 

@@ -1,12 +1,17 @@
 ---
-trigger: always_on
+trigger: file_match
+glob: "lab-php/**/*"
 ---
 
-# PHP lab guidance
+# PHP lab guidance (conditional)
+
+Apply these rules only when the target lab or file is PHP-related. They are
+kept in the shared configuration so PHP labs can reuse them; they do not
+define the structure or validation commands for other labs.
 
 - Keep explanations in simple English that a learner can explain aloud.
 - Use the official PHP manual for language behavior; start with
-  [the benchmark](../../2.benchmark/benchmark.md).
+  [the benchmark](../../lab-php/2.benchmark/benchmark.md).
 - Keep examples within namespaces, traits, and error/exception handling.
 - Run the relevant PHP check before describing its result. Report failures as
   observed; do not invent results or claim unverified behavior.
