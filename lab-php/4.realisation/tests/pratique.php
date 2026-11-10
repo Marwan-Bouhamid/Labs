@@ -28,6 +28,7 @@ $nameError = checkThrows(
     static fn () => new User('   ', 'valid@example.com'),
     'blank user name must be rejected',
 );
+/** @var ValidationException $nameError */
 check($nameError->field() === 'name', 'blank name error points to the wrong field');
 check($nameError->getCode() === 422, 'validation error has the wrong application code');
 
@@ -36,6 +37,7 @@ $emailError = checkThrows(
     static fn () => new User('Bob', 'not-an-email'),
     'invalid email must be rejected',
 );
+/** @var ValidationException $emailError */
 check($emailError->field() === 'email', 'invalid email error points to the wrong field');
 
 check(
