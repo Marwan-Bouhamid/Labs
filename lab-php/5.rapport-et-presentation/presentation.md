@@ -44,7 +44,7 @@ section.lead p {
 ## Namespaces · Traits · Errors & Exceptions
 
 **Student:** Marwan bouhamid<br>
-**Supervisor:** Foad
+**Supervisor:** ES-SARRAJ FOUAD
 
 A merged and improved version of the two PHP labs
 
@@ -83,11 +83,6 @@ introduced, shown in real code, and connected to a check the audience can run.
 | Several classes need the same small behavior | Traits | `HasTimestamps`, `Loggable` |
 | A failure is vague or silently ignored | Errors and exceptions | `TaskNotFoundException`, `ValidationException`, `ErrorException` |
 
-These are language features, not framework tricks. They work in any PHP 8.2+
-project.
-
-The lab keeps the scope small: one task tracker and one user account. The goal is
-to make each problem visible and testable, not to build a full application.
 
 <!--
 Speaker note: The three concepts answer three different maintenance problems:
@@ -104,13 +99,6 @@ mechanics stay visible.
 - PHP CLI, no Composer, no database, no framework
 - Markdown for the report and the Marp deck
 
-```powershell
-php 4.realisation/tests/run.php   # four checks
-php 4.realisation/demo.php        # full demonstration
-php 4.realisation/pratique/demo.php
-```
-
-Expected: four `PASS` lines. The project is small enough to read in one sitting.
 
 <!--
 Speaker note: Everything runs from the command line with a stock PHP install.
@@ -224,10 +212,8 @@ trait HasTimestamps
 ```php
 final class Task    { use HasTimestamps; /* ... */ }
 final class Project { use HasTimestamps; /* ... */ }
-final class User    { use Loggable;      /* ... */ }
 ```
 
-Check: `php 4.realisation/tests/traits.php`
 
 <!--
 Speaker note: Task and Project share the timestamp code without sharing a
@@ -253,8 +239,6 @@ Throwable
 - `catch` handles a matching type
 - `finally` always runs: restore a handler, close a resource
 
-A custom exception gives the failure a name, a message, and optionally a code
-and a previous exception.
 
 <!--
 Speaker note: Throwable is the umbrella. Exception and Error are siblings, not
@@ -304,8 +288,7 @@ failure path.
 
 ## From warning to exception
 
-`set_error_handler()` installs a user handler and keeps the previous one on a
-stack. The handler can inspect the current mask and decline a severity.
+`set_error_handler()` 
 
 ```php
 set_error_handler(static function (
@@ -317,11 +300,6 @@ set_error_handler(static function (
     throw new ErrorException($message, 0, $severity, $file, $line);
 });
 ```
-
-The test triggers one `E_USER_WARNING`, checks the conversion, checks the masked
-case, and restores the previous handler with `finally`.
-
-**Limit:** several fatal and compile-time errors cannot be handled this way.
 
 <!--
 Speaker note: The handler only converts a warning whose severity is enabled.
